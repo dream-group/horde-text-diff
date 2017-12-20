@@ -6,7 +6,8 @@
  * @package    Text_Diff
  * @subpackage UnitTests
  */
-class Horde_Text_Diff_RendererTest extends Horde_Test_Case
+
+class Horde_Text_Diff_RendererTest extends \PHPUnit\Framework\TestCase
 {
     protected $_lines = array();
 

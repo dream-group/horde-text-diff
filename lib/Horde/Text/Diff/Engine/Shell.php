@@ -36,8 +36,8 @@ class Horde_Text_Diff_Engine_Shell
         array_walk($to_lines, array('Horde_Text_Diff', 'trimNewlines'));
 
         // Execute gnu diff or similar to get a standard diff file.
-        $from_file = Horde_Util::getTempFile('Horde_Text_Diff');
-        $to_file = Horde_Util::getTempFile('Horde_Text_Diff');
+        $from_file = tempnam('/tmp', 'horde');
+        $to_file = tempnam('/tmp', 'horde');
         $fp = fopen($from_file, 'w');
         fwrite($fp, implode("\n", $from_lines));
         fclose($fp);

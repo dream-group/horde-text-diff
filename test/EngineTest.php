@@ -6,7 +6,8 @@
  * @package    Text_Diff
  * @subpackage UnitTests
  */
-class Horde_Text_Diff_EngineTest extends PHPUnit_Framework_TestCase
+
+class Horde_Text_Diff_EngineTest extends \PHPUnit\Framework\TestCase
 {
     protected $_lines = array();
 
@@ -71,15 +72,4 @@ class Horde_Text_Diff_EngineTest extends PHPUnit_Framework_TestCase
         $this->_testDiff($diff);
     }
 
-    public function testXdiffEngine()
-    {
-        try {
-            $diff = new Horde_Text_Diff('Xdiff', array($this->_lines[1], $this->_lines[2]));
-            $this->_testDiff($diff);
-        } catch (Horde_Text_Diff_Exception $e) {
-            if (extension_loaded('xdiff')) {
-                throw $e;
-            }
-        }
-    }
 }
