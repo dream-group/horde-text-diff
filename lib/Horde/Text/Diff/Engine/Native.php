@@ -189,8 +189,11 @@ class Horde_Text_Diff_Engine_Native
                     continue;
                 }
                 $matches = $ymatches[$line];
-                reset($matches);
-                while (list(, $y) = each($matches)) {
+                $imatches = new ArrayIterator($matches);
+                while ($imatches->valid()) {
+                    $y = $imatches->current();
+                    $imatches->next();
+
                     if (empty($this->in_seq[$y])) {
                         $k = $this->_lcsPos($y);
                         assert($k > 0);
@@ -198,7 +201,10 @@ class Horde_Text_Diff_Engine_Native
                         break;
                     }
                 }
-                while (list(, $y) = each($matches)) {
+                while ($imatches->valid()) {
+                    $y = $imatches->current();
+                    $imatches->next();
+
                     if ($y > $this->seq[$k - 1]) {
                         assert($y <= $this->seq[$k]);
                         /* Optimization: this is a common case: next match is
