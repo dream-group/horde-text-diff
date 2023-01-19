@@ -12,6 +12,7 @@
  *
  * @package Text_Diff
  */
+#[AllowDynamicProperties]
 class Horde_Text_Diff_Renderer
 {
     /**

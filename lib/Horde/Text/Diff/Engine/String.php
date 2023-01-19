@@ -19,6 +19,7 @@
  * @author  Örjan Persson <o@42mm.org>
  * @package Text_Diff
  */
+#[AllowDynamicProperties]
 class Horde_Text_Diff_Engine_String
 {
     /**

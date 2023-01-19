@@ -11,7 +11,7 @@ class Horde_Text_Diff_EngineTest extends \PHPUnit\Framework\TestCase
 {
     protected $_lines = array();
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->_lines = array(
             1 => file(__DIR__ . '/fixtures/1.txt'),
