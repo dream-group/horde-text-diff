@@ -11,7 +11,7 @@ class Horde_Text_Diff_RendererTest extends \PHPUnit\Framework\TestCase
 {
     protected $_lines = array();
 
-    public function setUp()
+    public function setUp(): void
     {
         for ($i = 1; $i <= 8; $i++) {
             $this->_lines[$i] = file(__DIR__ . '/fixtures/' . $i . '.txt');
@@ -287,15 +287,17 @@ QQ;
         $diff = new Horde_Text_Diff('Native', array(explode("\n", $b), explode("\n", $a)));
         $renderer = new Horde_Text_Diff_Renderer_Inline();
         $renderer->render($diff);
+
+        $this->expectNotToPerformAssertions(); // I'm not sure why but let's go with that
     }
-    
-    public function testGithubPullRequest86() 
+
+    public function testGithubPullRequest86()
     {
         $a = <<<EOA
 One
 Two
 EOA;
-                
+
         $b = <<<EOB
 Ones
 Twos
@@ -305,7 +307,7 @@ One<ins>s</ins>
 Two<ins>s</ins>
 
 EOPATCH;
-    
+
         $diff = new Horde_Text_Diff('Native', array(explode("\n", $a), explode("\n", $b)));
         $renderer = new Horde_Text_Diff_Renderer_Inline(array('split_characters' => true));
         $this->assertEquals($patch, $renderer->render($diff));

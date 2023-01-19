@@ -11,7 +11,7 @@ class Horde_Text_Diff_ThreeWayTest extends \PHPUnit\Framework\TestCase
 {
     protected $_lines = array();
 
-    public function setUp()
+    public function setUp(): void
     {
         for ($i = 1; $i <= 4; $i++) {
             $this->_lines[$i] = file(__DIR__ . '/fixtures/' . $i . '.txt');
